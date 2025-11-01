@@ -2,9 +2,16 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Corso Approfondito Apple</title>
 
+<!-- Manifest per PWA -->
 <link rel="manifest" href="manifest.webmanifest">
+
+<!-- Colore barra navigazione su iPhone -->
+<meta name="theme-color" content="#ffffff">
+
 <script>
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("service-worker.js");
@@ -96,7 +103,6 @@ if ("serviceWorker" in navigator) {
         transform: translateY(-2px);
         box-shadow: 0 8px 20px rgba(0,0,0,0.25);
     }
-
 </style>
 
 </head>
@@ -105,44 +111,39 @@ if ("serviceWorker" in navigator) {
 <h1>Corso Approfondito Apple</h1>
 <p class="lead">Cinque moduli per scoprire come il Mac può migliorare il tuo modo di insegnare.</p>
 
-<!-- INTRODUZIONE -->
 <div class="section">
     <div class="circle"><img src="IMG_1360.JPG"></div>
     <h2>Introduzione Hardware & Software</h2>
-    <p class="desc">Il Mac unisce bellezza e funzionalità in modo naturale. È uno strumento progettato per accompagnare la creatività e semplificare l'esperienza d’uso.</p>
-    <button class="open-btn" onclick="window.location='intro.html'">Apri Modulo</button>
+    <p class="desc">Il Mac unisce bellezza e funzionalità in modo naturale.</p>
+    <button class="open-btn" onclick="location.href='intro.html'">Apri Modulo</button>
 </div>
 
-<!-- STRUMENTI -->
 <div class="section">
     <div class="circle"><img src="IMG_1355.JPG"></div>
     <h2>Strumenti di Lavoro del Mac</h2>
-    <p class="desc">Dai gesti del trackpad alle funzioni di sistema: scopri come rendere fluido e immediato ogni compito quotidiano.</p>
-    <button class="open-btn" onclick="window.location='strumenti.html'">Apri Modulo</button>
+    <p class="desc">Gesti, funzioni e strumenti pensati per lavorare meglio.</p>
+    <button class="open-btn" onclick="location.href='strumenti.html'">Apri Modulo</button>
 </div>
 
-<!-- VANTAGGI -->
 <div class="section">
     <div class="circle"><img src="IMG_1353.JPG"></div>
     <h2>Vantaggi dell'Uso del Mac</h2>
-    <p class="desc">Stabilità, resistenza nel tempo e design pensato per la concentrazione. Un Mac accompagna davvero il tuo lavoro.</p>
-    <button class="open-btn" onclick="window.location='vantaggi.html'">Apri Modulo</button>
+    <p class="desc">Stabilità, durata nel tempo e design consapevole.</p>
+    <button class="open-btn" onclick="location.href='vantaggi.html'">Apri Modulo</button>
 </div>
 
-<!-- SICUREZZA -->
 <div class="section">
     <div class="circle"><img src="IMG_1349.JPG"></div>
     <h2>Sicurezza & Configurazioni</h2>
-    <p class="desc">Proteggi dati e privacy con semplicità. Backup, protezione automatica e impostazioni intuitive.</p>
-    <button class="open-btn" onclick="window.location='sicurezza.html'">Apri Modulo</button>
+    <p class="desc">Proteggi i tuoi dati con semplicità.</p>
+    <button class="open-btn" onclick="location.href='sicurezza.html'">Apri Modulo</button>
 </div>
 
-<!-- INTEGRAZIONE DIDATTICA -->
 <div class="section">
     <div class="circle"><img src="IMG_1347.JPG"></div>
     <h2>Integrazione nella Didattica</h2>
-    <p class="desc">Il Mac rende la lezione più coinvolgente, attiva e partecipata. Creatività e apprendimento vanno insieme.</p>
-    <button class="open-btn" onclick="window.location='integrazione.html'">Apri Modulo</button>
+    <p class="desc">Strumenti per lezioni coinvolgenti e partecipate.</p>
+    <button class="open-btn" onclick="location.href='integrazione.html'">Apri Modulo</button>
 </div>
 
 </body>
