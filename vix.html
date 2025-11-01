@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Corso Approfondito Apple</title>
+
+<link rel="manifest" href="manifest.webmanifest">
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        background: url("IMG_1346.JPG") no-repeat center center fixed;
+        background-size: cover;
+        font-family: -apple-system, Arial, Helvetica, sans-serif;
+        overflow-y: auto;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 36px;
+        font-weight: 600;
+        color: white;
+        text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+    }
+
+    p.lead {
+        text-align: center;
+        color: white;
+        font-size: 18px;
+        margin-bottom: 50px;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .section {
+        width: 90%;
+        max-width: 900px;
+        margin: 25px auto;
+        background: rgba(255,255,255,0.80);
+        border-radius: 18px;
+        padding: 25px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+
+    .circle {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid white;
+        margin: auto;
+        margin-bottom: 15px;
+    }
+
+    .circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    h2 {
+        font-size: 24px;
+        font-weight: 600;
+        color: #222;
+        margin-bottom: 10px;
+    }
+
+    p.desc {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 25px;
+        line-height: 1.45em;
+    }
+
+    button.open-btn {
+        background: white;
+        padding: 12px 22px;
+        border-radius: 12px;
+        border: 2px solid #ddd;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+
+    button.open-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+</style>
+
+</head>
+<body>
+
+<h1>Corso Approfondito Apple</h1>
+<p class="lead">Cinque moduli per scoprire come il Mac può migliorare il tuo modo di insegnare.</p>
+
+<!-- INTRODUZIONE -->
+<div class="section">
+    <div class="circle"><img src="IMG_1360.JPG"></div>
+    <h2>Introduzione Hardware & Software</h2>
+    <p class="desc">Il Mac unisce bellezza e funzionalità in modo naturale. È uno strumento progettato per accompagnare la creatività e semplificare l'esperienza d’uso.</p>
+    <button class="open-btn" onclick="window.location='intro.html'">Apri Modulo</button>
+</div>
+
+<!-- STRUMENTI -->
+<div class="section">
+    <div class="circle"><img src="IMG_1355.JPG"></div>
+    <h2>Strumenti di Lavoro del Mac</h2>
+    <p class="desc">Dai gesti del trackpad alle funzioni di sistema: scopri come rendere fluido e immediato ogni compito quotidiano.</p>
+    <button class="open-btn" onclick="window.location='strumenti.html'">Apri Modulo</button>
+</div>
+
+<!-- VANTAGGI -->
+<div class="section">
+    <div class="circle"><img src="IMG_1353.JPG"></div>
+    <h2>Vantaggi dell'Uso del Mac</h2>
+    <p class="desc">Stabilità, resistenza nel tempo e design pensato per la concentrazione. Un Mac accompagna davvero il tuo lavoro.</p>
+    <button class="open-btn" onclick="window.location='vantaggi.html'">Apri Modulo</button>
+</div>
+
+<!-- SICUREZZA -->
+<div class="section">
+    <div class="circle"><img src="IMG_1349.JPG"></div>
+    <h2>Sicurezza & Configurazioni</h2>
+    <p class="desc">Proteggi dati e privacy con semplicità. Backup, protezione automatica e impostazioni intuitive.</p>
+    <button class="open-btn" onclick="window.location='sicurezza.html'">Apri Modulo</button>
+</div>
+
+<!-- INTEGRAZIONE DIDATTICA -->
+<div class="section">
+    <div class="circle"><img src="IMG_1347.JPG"></div>
+    <h2>Integrazione nella Didattica</h2>
+    <p class="desc">Il Mac rende la lezione più coinvolgente, attiva e partecipata. Creatività e apprendimento vanno insieme.</p>
+    <button class="open-btn" onclick="window.location='integrazione.html'">Apri Modulo</button>
+</div>
+
+</body>
+</html>

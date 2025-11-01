@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigare in macOS – Guida Interattiva</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* GIOCO DI DISSOLVENZA E MOVIMENTO (FadeIn) */
+        .content-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        .nav-link.active {
+            background-color: #eff6ff;
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .nav-link:hover {
+            background-color: #f9fafb;
+            color: #1d4ed8;
+        }
+
+        /* STILE TASTI (KBD) - GIOCO DI FORME */
+        kbd {
+            background-color: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-bottom-width: 2px;
+            border-radius: 6px;
+            padding: 3px 8px;
+            font-family: monospace;
+            font-size: 0.9em;
+            font-weight: 500;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+            margin: 0 2px;
+            display: inline-block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Classe per nascondere la barra di navigazione */
+        .nav-hidden {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Classe per mostrare la barra di navigazione */
+        .nav-visible {
+            transform: translateX(0);
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="min-h-screen">
+        <header class="bg-white shadow-sm border-b border-gray-200">
+            <div class="container mx-auto px-4 py-5 md:px-8">
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-900">Navigare in macOS – Strumenti Essenziali per Lavorare Meglio</h1>
+            </div>
+        </header>
+
+        <div class="container mx-auto p-4 md:p-8 grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
+            <nav id="sidebar" class="md:col-span-1 bg-white p-4 rounded-lg shadow-sm h-fit sticky top-8 nav-visible">
+                <ul class="space-y-2">
+                    <li><a href="#" class="nav-link active flex items-center space-x-3 text-gray-700 p-3 rounded-md" data-target="intro">
+                        <span class="text-xl">🚀</span>
+                        <span>Introduzione</span>
+                    </a></li>
+                    <li><a href="#" class="nav-link flex items-center space-x-3 text-gray-700 p-3 rounded-md" data-target="finder">
+                        <span class="text-xl">📁</span>
+                        <span>Finder</span>
+                    </a></li>
+                    <li><a href="#" class="nav-link flex items-center space-x-3 text-gray-700 p-3 rounded-md" data-target="dock">
+                        <span class="text-xl">📍</span>
+                        <span>Dock</span>
+                    </a></li>
+                    <li><a href="#" class="nav-link flex items-center space-x-3 text-gray-700 p-3 rounded-md" data-target="spotlight">
+                        <span class="text-xl">🔍</span>
+                        <span>Spotlight</span>
+                    </a></li>
+                    <li><a href="#" class="nav-link flex items-center space-x-3 text-gray-700 p-3 rounded-md" data-target="mission">
+                        <span class="text-xl">🔲</span>
+                        <span>Mission Control</span>
+                    </a></li>
+                    <li><a href="#" class="nav-link flex items-center space-x-3 text-gray-700 p-3 rounded-md" data-target="shortcuts">
+                        <span class="text-xl">⌨️</span>
+                        <span>Scorciatoie</span>
+                    </a></li>
+                    <li><a href="#" class="nav-link flex items-center space-x-3 text-gray-700 p-3 rounded-md" data-target="gestures">
+                        <span class="text-xl">🖐️</span>
+                        <span>Gesture Trackpad</span>
+                    </a></li>
+                    <li><a href="#" class="nav-link flex items-center space-x-3 text-gray-700 p-3 rounded-md" data-target="conclusion">
+                        <span class="text-xl">🎯</span>
+                        <span>Conclusione</span>
+                    </a></li>
+                </ul>
+            </nav>
+
+            <main class="md:col-span-3 bg-white rounded-lg shadow-sm p-6 md:p-10 min-h-[60vh]">
+                <section id="intro" class="content-section active space-y-4">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900">Introduzione a macOS</h2>
+                    <p class="text-lg leading-relaxed text-gray-600">Benvenuti in questa guida a macOS, il sistema operativo dei Mac. macOS è il software che controlla tutte le funzioni del computer, e una delle sue caratteristiche principali è l’essere intuitivo e sicuro.</p>
+                    <p class="leading-relaxed">È progettato direttamente da Apple e funziona in modo perfetto con l’hardware dei Mac. Questo significa maggiore stabilità, meno problemi, e soprattutto un’esperienza fluida anche dopo molti anni di utilizzo.</p>
+                    <p class="leading-relaxed">macOS è pensato non solo per usare le applicazioni, ma per lavorare meglio: scrivere, organizzare materiali, creare contenuti e collaborare. In questa guida esploreremo come muoverci nell’interfaccia, come gestire file e cartelle, e quali strumenti ci permettono di essere più produttivi e veloci nel lavoro quotidiano.</p>
+                </section>
+
+                <section id="finder" class="content-section space-y-4">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900">Finder: Il Cuore di macOS 📁</h2>
+                    <p class="text-lg leading-relaxed text-gray-600">Il Finder è il centro della gestione dei file. È l’icona con la faccia sorridente che troviamo nella Dock. Questa sezione spiega come usarlo per navigare e organizzare il tuo lavoro.</p>
+                    <p class="leading-relaxed">Dal Finder possiamo navigare tra Documenti, Scrivania, Download, collegare dischi esterni e organizzare cartelle. Una delle sue forze è la semplicità visiva: tutto è in forma di cartelle, come in un archivio fisico. Per chi lavora con molti documenti, questa chiarezza è essenziale.</p>
+
+                    <h3 class="text-2xl font-semibold pt-4 text-gray-900">Funzioni Principali</h3>
+                    <ul class="list-disc list-inside space-y-2 pl-2 text-gray-700">
+                        <li>Gestire file trascinandoli da una cartella all’altra.</li>
+                        <li>Creare nuove cartelle con <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd>.</li>
+                        <li>Rinominare rapidamente un file con un click lento o premendo <kbd>Invio</kbd>.</li>
+                        <li>Aggiungere etichette colorate per raggruppare materiali per tema o progetto.</li>
+                    </ul>
+
+                    <div class="mt-4 p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-md text-blue-800">
+                        <p class="font-semibold">Esempio di organizzazione:</p>
+                        <p class="font-mono text-sm mt-2">
+                            Anno scolastico/<br>
+                            &nbsp;&nbsp;├─ Classi/<br>
+                            &nbsp;&nbsp;├─ Verifiche/<br>
+                            &nbsp;&nbsp;└─ Materiali condivisi/
+                        </p>
+                    </div>
+
+                    <h3 class="text-2xl font-semibold pt-4 text-gray-900">Personalizzazione</h3>
+                    <p class="leading-relaxed">Per lavorare più rapidamente, puoi personalizzare il Finder:</p>
+                    <ul class="list-disc list-inside space-y-2 pl-2 text-gray-700">
+                        <li>Scegli la vista che preferisci: <strong>icone, lista, colonne o galleria</strong>.</li>
+                        <li>Trascina le cartelle che usi di più nella <strong>barra laterale</strong> per averle sempre a portata di mano.</li>
+                    </ul>
+                </section>
+
+                <section id="dock" class="content-section space-y-4">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900">Dock: Accesso Rapido alle App 📍</h2>
+                    <p class="text-lg leading-relaxed text-gray-600">La Dock è la barra (solitamente in basso) che raccoglie le app preferite e quelle aperte. È il tuo trampolino di lancio per le applicazioni.</p>
+                    <p class="leading-relaxed">Questo strumento ti permette di avere le applicazioni principali sempre a portata di mano, senza doverle cercare ogni volta.</p>
+
+                    <ul class="list-disc list-inside space-y-2 pl-2 text-gray-700">
+                        <li><strong>Aggiungere un'app:</strong> Trascinala dall'app "Applicazioni" alla Dock.</li>
+                        <li><strong>Rimuovere un'app:</strong> Trascinala fuori dalla Dock finché non appare la scritta "Rimuovi".</li>
+                        <li><strong>Vedere app aperte:</strong> Un puntino luminoso sotto l'icona indica che l'app è in esecuzione.</li>
+                    </ul>
+
+                    <div class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-md text-yellow-800">
+                        <p class="font-semibold">Consiglio Pratico:</p>
+                        <p>Inserisci in Dock solo le app essenziali che usi ogni giorno. Evita di riempirla troppo per non creare confusione.</p>
+                    </div>
+                </section>
+
+                <section id="spotlight" class="content-section space-y-4">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900">Spotlight: Ricerca Istantanea 🔍</h2>
+                    <p class="text-lg leading-relaxed text-gray-600">Spotlight è uno degli strumenti più potenti e sottovalutati di macOS. Ti permette di trovare qualsiasi cosa all'istante.</p>
+
+                    <p class="leading-relaxed">Aprilo con la scorciatoia <kbd>Cmd</kbd> + <kbd>Spazio</kbd>. Spotlight è molto più di una semplice ricerca file:</p>
+                    <ul class="list-disc list-inside space-y-2 pl-2 text-gray-700">
+                        <li>Cercare file, cartelle, email e applicazioni.</li>
+                        <li>Trovare informazioni sul web e definizioni dal dizionario.</li>
+                        <li>Eseguire calcoli matematici (es. "150 * 3") o conversioni (es. "100 EUR in USD").</li>
+                    </ul>
+
+                    <div class="mt-4 p-4 bg-green-50 border-l-4 border-green-400 rounded-r-md text-green-800">
+                        <p class="font-semibold">Esempio Concreto:</p>
+                        <p>Digitando “verifiche marzo”, Spotlight mostra subito file e cartelle corrispondenti, ovunque si trovino nel computer. Questo riduce drasticamente il tempo perso a cercare cose.</p>
+                    </div>
+                </section>
+
+                <section id="mission" class="content-section space-y-4">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900">Mission Control: Gestione Finestre 🔲</h2>
+                    <p class="text-lg leading-relaxed text-gray-600">Con molte app aperte, lo schermo può diventare confuso. Mission Control serve a vedere tutto con un colpo d’occhio e a organizzare il caos.</p>
+                    <p class="leading-relaxed">Ti permette di mantenere la mente libera e concentrata, separando i contesti di lavoro.</p>
+
+                    <h3 class="text-2xl font-semibold pt-4 text-gray-900">Come attivarlo</h3>
+                    <ul class="list-disc list-inside space-y-2 pl-2 text-gray-700">
+                        <li>Premi il tasto <kbd>F3</kbd> (spesso ha un'icona con tre rettangoli).</li>
+                        <li>Esegui uno <strong>swipe verso l’alto con 3 o 4 dita</strong> sul trackpad.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold pt-4 text-gray-900">Cosa puoi fare</h3>
+                    <ul class="list-disc list-inside space-y-2 pl-2 text-gray-700">
+                        <li>Vedere e organizzare tutte le finestre aperte.</li>
+                        <li>Creare <strong>scrivanie virtuali</strong> (es. una per il "Lavoro" e una per lo "Svago").</li>
+                        <li>Spostare app e finestre da una scrivania all'altra.</li>
+                    </ul>
+                </section>
+
+                <section id="shortcuts" class="content-section space-y-4">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900">Scorciatoie da Tastiera Utili ⌨️</h2>
+                    <p class="text-lg leading-relaxed text-gray-600">Usare le scorciatoie da tastiera è il modo più rapido per velocizzare il lavoro. Impararne poche ma fondamentali può farti risparmiare ore nel lungo periodo.</p>
+                    <p class="leading-relaxed">Ecco una tabella con i comandi essenziali da memorizzare e usare ogni giorno.</p>
+
+                    <div class="overflow-x-auto mt-4">
+                        <table class="w-full min-w-max text-left border-collapse">
+                            <thead class="border-b-2 border-gray-300">
+                                <tr>
+                                    <th class="p-3 text-sm font-semibold text-gray-700 uppercase">Azione</th>
+                                    <th class="p-3 text-sm font-semibold text-gray-700 uppercase">Comando</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr class="hover:bg-gray-50">
+                                    <td class="p-4 font-medium text-gray-800">Passare tra app aperte</td>
+                                    <td class="p-4 text-gray-700"><kbd>Cmd</kbd> + <kbd>Tab</kbd></td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="p-4 font-medium text-gray-800">Copia e Incolla</td>
+                                    <td class="p-4 text-gray-700"><kbd>Cmd</kbd> + <kbd>C</kbd> / <kbd>Cmd</kbd> + <kbd>V</kbd></td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="p-4 font-medium text-gray-800">Chiudere una finestra</td>
+                                    <td class="p-4 text-gray-700"><kbd>Cmd</kbd> + <kbd>W</kbd></td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="p-4 font-medium text-gray-800">Chiudere un’app completamente</td>
+                                    <td class="p-4 text-gray-700"><kbd>Cmd</kbd> + <kbd>Q</kbd></td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="p-4 font-medium text-gray-800">Aprire Spotlight</td>
+                                    <td class="p-4 text-gray-700"><kbd>Cmd</kbd> + <kbd>Spazio</kbd></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="gestures" class="content-section space-y-4">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900">Gesture del Trackpad 🖐️</h2>
+                    <p class="text-lg leading-relaxed text-gray-600">Il trackpad del Mac è progettato per sostituire il mouse in modo naturale e fluido. Imparare le gesture ti permette di navigare con velocità e precisione.</p>
+                    <p class="leading-relaxed">Questi gesti semplici ti permettono di lavorare senza quasi mai sollevare le mani dalla tastiera.</p>
+
+                    <div class="space-y-3 pt-4">
+                        <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                            <span class="text-3xl mt-1">↕️</span>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">Scorrere con due dita</h3>
+                                <p class="text-gray-700">Permette una navigazione fluida su pagine web e documenti.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                            <span class="text-3xl mt-1">🤏</span>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">Pinch-to-zoom</h3>
+                                <p class="text-gray-700">Pizzica con due dita per zoomare dentro e fuori, come sugli smartphone.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                            <span class="text-3xl mt-1">↔️</span>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">Swipe con tre dita</h3>
+                                <p class="text-gray-700">Scorri a destra o sinistra per passare tra le scrivanie virtuali. Scorri verso l'alto per attivare Mission Control.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="conclusion" class="content-section space-y-4">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900">Conclusione e Consigli Pratici 🎯</h2>
+                    <p class="text-lg leading-relaxed text-gray-600">Hai esplorato gli strumenti fondamentali di macOS. Ora il segreto è l'abitudine. macOS è progettato per essere uno stile di lavoro più chiaro, ordinato e sereno.</p>
+                    <p class="leading-relaxed">Per ottenere il massimo dal tuo Mac, ricorda questi consigli:</p>
+
+                    <ul class="list-check list-inside space-y-3 pl-2 text-gray-700 pt-4">
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3">✔</span>
+                            <strong>Sperimenta:</strong> Dedica qualche minuto al giorno a provare una nuova gesture o scorciatoia.
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3">✔</span>
+                            <strong>Organizza:</strong> Mantieni un’organizzazione coerente delle cartelle nel Finder.
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3">✔</span>
+                            <strong>Risparmia tempo:</strong> Usa Spotlight per aprire app e cercare file. Usa Mission Control per gestire il caos.
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3">✔</span>
+                            <strong>Lavora fluido:</strong> Sfrutta le gesture per muoverti senza interruzioni.
+                        </li>
+                    </ul>
+                    <p class="mt-8 text-2xl font-bold text-center text-blue-700">
+                        macOS = lavoro più chiaro, fluido e sereno.
+                    </p>
+                </section>
+            </main>
+        </div>
+
+        <footer class="text-center p-8 mt-12 border-t border-gray-200">
+            <p class="text-sm text-gray-500">Guida Interattiva a macOS | Creata da un'analisi della presentazione.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+            const navBar = document.getElementById('sidebar');
+
+            // Gestione della visibilità della barra di navigazione durante lo scroll
+            let isScrolling;
+            window.addEventListener('scroll', function() {
+                navBar.classList.add('nav-hidden');
+                navBar.classList.remove('nav-visible');
+
+                // Reimposta il timer per nascondere la barra
+                window.clearTimeout(isScrolling);
+                isScrolling = setTimeout(function() {
+                    navBar.classList.remove('nav-hidden');
+                    navBar.classList.add('nav-visible');
+                }, 200);
+            }, false);
+
+            // Gestione dei link di navigazione
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+
+                    const targetId = link.getAttribute('data-target');
+                    const targetElement = document.getElementById(targetId);
+
+                    // Rimuove 'active' da tutte le sezioni di contenuto
+                    contentSections.forEach(section => {
+                        section.classList.remove('active');
+                    });
+
+                    // Rimuove 'active' da tutti i link di navigazione
+                    navLinks.forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+
+                    // Aggiunge 'active' al contenuto e al link corretti
+                    if(targetElement) {
+                        targetElement.classList.add('active');
+                    }
+                    link.classList.add('active');
+
+                    // Scorre in cima alla pagina per una migliore UX
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

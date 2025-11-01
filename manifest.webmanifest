@@ -1,0 +1,15 @@
+{
+  "name": "Il Mac per Insegnare",
+  "short_name": "Mac Didattica",
+  "start_url": "vix.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "IMG_1343.JPG",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

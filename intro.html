@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MacBook Air M2 - Presentazione</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: "Inter", sans-serif; }
+
+    .content-section {
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity .4s ease, transform .4s ease;
+    }
+    .content-section.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Stile sidebar macOS */
+    .mac-sidebar {
+      backdrop-filter: blur(20px);
+      background: rgba(255,255,255,0.6);
+    }
+    .nav-btn.active {
+      background: rgba(140,140,255,0.25);
+      border-radius: 8px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<div class="flex h-screen overflow-hidden">
+
+  <!-- SIDEBAR STILE macOS -->
+  <aside class="mac-sidebar w-64 border-r border-gray-200 fixed inset-y-0 left-0 p-4 overflow-y-auto">
+    <h1 class="text-lg font-semibold mb-4 text-gray-700">MacBook Air M2</h1>
+    <nav class="space-y-1">
+      <button data-target="intro" class="nav-btn block w-full text-left px-3 py-2 active">Introduzione</button>
+      <button data-target="hardware" class="nav-btn block w-full text-left px-3 py-2">Hardware e Design</button>
+      <button data-target="interfaccia" class="nav-btn block w-full text-left px-3 py-2">Primi Passi e Interfaccia</button>
+      <button data-target="didattica" class="nav-btn block w-full text-left px-3 py-2">Didattica e Applicazioni</button>
+      <button data-target="sicurezza" class="nav-btn block w-full text-left px-3 py-2">Sicurezza e Connettività</button>
+      <button data-target="manutenzione" class="nav-btn block w-full text-left px-3 py-2">Manutenzione e Supporto</button>
+      <button data-target="conclusione" class="nav-btn block w-full text-left px-3 py-2">Conclusione</button>
+    </nav>
+  </aside>
+
+  <!-- CONTENUTO -->
+  <main class="flex-1 ml-64 p-6 overflow-y-auto">
+
+    <section id="intro" class="content-section active">
+      <h2 class="text-2xl font-bold mb-4">Introduzione</h2>
+      <p>Oggi vedremo insieme come il MacBook Air con chip M2 possa rappresentare un passo importante per la didattica.</p>
+      <p class="mt-2">Non solo prestazioni, ma strumenti concreti per insegnanti e studenti.</p>
+    </section>
+
+    <section id="hardware" class="content-section">
+      <h2 class="text-2xl font-bold mb-4">1. Hardware e Design</h2>
+      <ul class="list-disc ml-6 space-y-1">
+        <li>Chip M2 → fluido, silenzioso, stabile.</li>
+        <li>Display Retina 13,6" → riduce l’affaticamento visivo.</li>
+        <li>Peso 1,24 kg → portabilità reale.</li>
+        <li>Tastiera e trackpad → scrittura comoda e precisa.</li>
+      </ul>
+    </section>
+
+    <section id="interfaccia" class="content-section">
+      <h2 class="text-2xl font-bold mb-4">2. Primi Passi e Interfaccia</h2>
+      <ul class="list-disc ml-6 space-y-1">
+        <li>Dock → app principali sempre a portata.</li>
+        <li>Finder → file ordinati come scaffali reali.</li>
+        <li>Spotlight → ciò che cerchi in 2 secondi.</li>
+        <li>Mission Control → finestre organizzate meglio del cervello umano 😄</li>
+      </ul>
+    </section>
+
+    <section id="didattica" class="content-section">
+      <h2 class="text-2xl font-bold mb-4">3. Didattica e Applicazioni</h2>
+      <ul class="list-disc ml-6 space-y-1">
+        <li>Pages, Numbers, Keynote → produttività creativa.</li>
+        <li>Note, Safari, GarageBand → strumenti quotidiani.</li>
+        <li>Classroom & Schoolwork → gestione didattica guidata.</li>
+      </ul>
+    </section>
+
+    <section id="sicurezza" class="content-section">
+      <h2 class="text-2xl font-bold mb-4">4. Sicurezza e Connettività</h2>
+      <ul class="list-disc ml-6 space-y-1">
+        <li>Touch ID → accesso immediato.</li>
+        <li>FileVault → dati protetti.</li>
+        <li>Aggiornamenti automatici → sicurezza continua.</li>
+        <li>MagSafe 3 + USB-C/Thunderbolt → compatibile con LIM e proiettori.</li>
+      </ul>
+    </section>
+
+    <section id="manutenzione" class="content-section">
+      <h2 class="text-2xl font-bold mb-4">5. Manutenzione e Supporto</h2>
+      <p>Richiede poca manutenzione e Apple offre supporto e corsi gratuiti per docenti.</p>
+    </section>
+
+    <section id="conclusione" class="content-section">
+      <h2 class="text-2xl font-bold mb-4">Conclusione</h2>
+      <p>Il MacBook Air M2 è uno strumento educativo che valorizza insegnante e studente, stimola creatività, ordine e collaborazione.</p>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll(".nav-btn");
+  const sections = document.querySelectorAll(".content-section");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      buttons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      sections.forEach(sec => sec.classList.remove("active"));
+      document.getElementById(btn.dataset.target).classList.add("active");
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+</script>
+
+</body>
+</html>

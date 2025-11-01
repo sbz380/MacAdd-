@@ -1,0 +1,32 @@
+const cacheName = "mac-didattica-cache-v1";
+const assets = [
+  "./vix.html",
+  "./intro.html",
+  "./strumenti.html",
+  "./vantaggi.html",
+  "./sicurezza.html",
+  "./integrazione.html",
+  "./IMG_1343.JPG",
+  "./IMG_1346.JPG",
+  "./IMG_1360.JPG",
+  "./IMG_1355.JPG",
+  "./IMG_1353.JPG",
+  "./IMG_1349.JPG",
+  "./IMG_1347.JPG"
+];
+
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open(cacheName).then(cache => {
+      return cache.addAll(assets);
+    })
+  );
+});
+
+self.addEventListener("fetch", event => {
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request);
+    })
+  );
+});
