@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Lezione Mac - Dock Interattivo</title>
 <script src="https://cdn.tailwindcss.com"></script>
+
 <style>
   :root{
     --dock-bg: rgba(255,255,255,0.78);
@@ -14,11 +15,11 @@
   html,body{
     height:100%;
     margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Inter",system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    font-family:-apple-system, BlinkMacSystemFont, "Inter", system-ui, Segoe UI, Roboto, "Helvetica Neue", Arial;
     color:#0b1220;
   }
 
-  /* --- SFONDO: sfocato SOLO nello pseudo-elemento, testo intatto --- */
+  /* Sfondo sfocato ma testo nitido */
   body{
     background:none;
     -webkit-font-smoothing:antialiased;
@@ -34,7 +35,6 @@
     z-index:-2;
   }
 
-  /* un leggero overlay semi-trasparente per aumentare leggibilità (molto tenue) */
   body::after{
     content:"";
     position:fixed;
@@ -43,140 +43,49 @@
     z-index:-1;
   }
 
-  /* Content container */
-  #content {
+  #content{
     max-width: 980px;
     margin: 32px auto 120px;
     padding: 18px;
   }
 
-  .intro {
-    margin-top:20px;
-    text-align:center;
-    color: #frfff;
+  /* ---- TESTO DI TESTA (RICHIESTO) ---- */
+
+  .white-outline-title {
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 2rem;
+    text-align: center;
+    text-shadow:
+      -2px -2px 0 #000,
+       2px -2px 0 #000,
+      -2px  2px 0 #000,
+       2px  2px 0 #000;
+    margin-top: 28px;
+    margin-bottom: 4px;
   }
 
-  .intro h1{ font-size:1.6rem; font-weight:700; color:#061226; margin-bottom:6px }
-  .intro p{ color:#0b1220; opacity:0.9; max-width:800px; margin:0 auto }
-
-  /* Slide panel */
-  .slide-panel{
-    display:none;
-    margin: 24px auto;
-    padding: 22px;
-    border-radius:12px;
-    background: var(--panel-bg);
-    box-shadow: 0 8px 22px rgba(2,6,23,0.08);
-    color:#0b1220;
-    line-height:1.6;
+  .white-outline-small {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    text-shadow:
+      -1px -1px 0 #000,
+       1px -1px 0 #000,
+      -1px  1px 0 #000,
+       1px  1px 0 #000;
+    margin-bottom: 28px;
   }
-
-  .slide-panel h2{font-size:1.28rem;margin-bottom:10px;color:#071027}
-  .slide-panel p, .slide-panel ul{font-size:1rem;margin-bottom:10px}
-  .slide-panel ul{padding-left:1.15rem}
-
-  .back-btn{
-    display:inline-block;
-    margin-top:12px;
-    background:#0b1220;color:#fff;padding:7px 12px;border-radius:8px;text-decoration:none;cursor:pointer;
-  }
-  .back-btn:hover{background:#111827}
-
-  /* DOCK - centrato e leggermente "mac-like" ma semplice */
-  #dock{
-    position:fixed;
-    left:50%;
-    transform:translateX(-50%);
-    bottom:24px;
-    display:flex;
-    gap:14px;
-    padding:10px 18px;
-    background:var(--dock-bg);
-    border-radius:20px;
-    box-shadow:0 12px 30px rgba(2,6,23,0.12);
-    z-index:80;
-    align-items:end;
-    overflow-x:auto;
-    white-space:nowrap;
-    -webkit-overflow-scrolling:touch;
-  }
-
-  /* each icon wrapper */
-  .dock-item{
-    width:64px;
-    height:64px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:12px;
-    transition: transform .18s ease, box-shadow .18s ease;
-    position:relative;
-    cursor:pointer;
-    background:transparent;
-    flex: 0 0 auto;
-  }
-
-  /* image inside dock */
-  .dock-item img.icon {
-    width:44px;
-    height:44px;
-    object-fit:cover;
-    border-radius:10px;
-    display:block;
-    box-shadow: 0 6px 16px rgba(2,6,23,0.12);
-  }
-
-  /* enlarge on hover (magnify) but moderate */
-  .dock-item:hover{
-    transform: translateY(-8px) scale(1.12);
-    z-index:200;
-  }
-
-  /* tooltip/title under icon (appears on hover) */
-  .dock-item::after{
-    content: attr(data-title);
-    position:absolute;
-    bottom:-36px;
-    left:50%;
-    transform:translateX(-50%);
-    background: rgba(8,11,22,0.92);
-    color:#fff;
-    font-size:13px;
-    padding:6px 8px;
-    border-radius:8px;
-    opacity:0;
-    pointer-events:none;
-    white-space:nowrap;
-    transition: opacity .12s ease, transform .12s ease;
-  }
-  .dock-item:hover::after{ opacity:1; transform: translateX(-50%) translateY(-6px); }
-
-  /* small caption under dock (initial hint) */
-  #hint{
-    position:fixed;
-    left:50%;
-    transform:translateX(-50%);
-    bottom:104px;
-    color:#0b1220;
-    background:rgba(255,255,255,0.86);
-    padding:6px 10px;border-radius:10px;font-size:13px;z-index:70;
-    box-shadow:0 8px 20px rgba(2,6,23,0.08);
-    display:none;
-  }
-
-  @media (max-width:720px){
-    .slide-panel{ margin:16px 12px; padding:14px; border-radius:10px }
-    .dock-item::after{ display:none } /* hide tooltip on small */
-    #hint{ display:none }
-    #dock{ left:8px; transform:none; right:8px; bottom:18px; border-radius:12px; padding:8px; gap:10px; }
-  }
-
-  /* ensure panels are keyboard accessible focus style */
-  .dock-item:focus{ outline:2px solid rgba(59,130,246,0.35); outline-offset:4px; border-radius:10px; }
 
 </style>
 </head>
 <body>
+
+<div class="intro">
+  <h1 class="white-outline-title">Implementazione</h1>
+  <p class="white-outline-small">Seleziona una icona</p>
+</div>
 
 <div id="content">
   <div class="intro">
