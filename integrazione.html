@@ -13,196 +13,201 @@
   }
 
   html,body{
-    height:100%;
-    margin:0;
+    margin:0;height:100%;
     font-family:-apple-system,BlinkMacSystemFont,"Inter",system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
     color:#0b1220;
   }
 
-  /* SFONDO SFUMATO */
+  /* Sfondo sfocato senza disturbare il testo */
   body::before{
     content:"";
     position:fixed;
     inset:0;
-    background: url("IMG_1352.JPG") center/cover no-repeat fixed;
-    filter: blur(4px) brightness(0.78);
+    background:url("IMG_1352.JPG") center/cover no-repeat fixed;
+    filter:blur(3px) brightness(0.78);
     z-index:-2;
   }
 
-  body::after{
-    content:"";
-    position:fixed;
-    inset:0;
-    background: rgba(0,0,0,0.14);
-    z-index:-1;
-  }
-
-  #content {
-    max-width: 980px;
-    margin: 32px auto 120px;
-    padding: 18px;
-  }
-
-  /* --- TITOLO + SOTTOTITOLO --- */
-  .intro{
-    margin-top:20px;
-    text-align:center;
-  }
-
-  .intro h1{
-    font-size:2.15rem;
-    font-weight:900;
-    color:#fff;
-    -webkit-text-stroke: 2px #000;
-    text-shadow:0 0 25px rgba(0,0,0,0.85);
-    margin-bottom:10px;
-  }
-
-  .intro p{
+  /* Titolo implementazione */
+  .intro h1 {
+    font-size:2.2rem;
+    font-weight:700;
     color:#ffffff;
-    font-weight:500;
-    text-shadow:0 0 14px rgba(0,0,0,0.7);
-    opacity:1;
+    -webkit-text-stroke: 2px #000000;
+    text-stroke: 2px #000000;
+    text-align:center;
+    margin-top:24px;
+    margin-bottom:6px;
   }
 
-  /* SLIDE PANELS */
+  /* Testo selezione */
+  .intro p {
+    text-align:center;
+    color:white;
+    font-weight:500;
+    margin-bottom:20px;
+  }
+
+  /* Contenitore pannelli */
+  #content{
+    max-width:960px;margin:0 auto;padding:20px;margin-bottom:130px;
+  }
+
   .slide-panel{
     display:none;
-    margin:24px auto;
-    padding:22px;
-    border-radius:12px;
     background:var(--panel-bg);
-    box-shadow:0 8px 22px rgba(2,6,23,0.10);
-    line-height:1.6;
+    padding:24px;border-radius:14px;
+    margin-top:28px;line-height:1.55;
+    box-shadow:0 8px 22px rgba(0,0,0,.18);
+  }
+
+  .slide-panel h2{
+    font-size:1.5rem;font-weight:600;margin-bottom:14px;color:#0b1220;
   }
 
   .back-btn{
-    margin-top:12px;
-    background:#0b1220;
-    color:#fff;
-    padding:7px 12px;
-    border-radius:8px;
-    cursor:pointer;
-    border:none;
+    display:inline-block;margin-top:18px;
+    background:#0b1220;color:white;
+    padding:8px 14px;border-radius:8px;cursor:pointer;
   }
 
-  /* --- DOCK --- */
+  /* Dock */
   #dock{
-    position:fixed;
-    left:50%;
-    transform:translateX(-50%);
-    bottom:24px;
-    display:flex;
-    gap:14px;
-    padding:10px 18px;
-    background:var(--dock-bg);
-    border-radius:20px;
-    box-shadow:0 12px 30px rgba(2,6,23,0.22);
-    z-index:80;
+    position:fixed;left:50%;transform:translateX(-50%);
+    bottom:22px;display:flex;gap:14px;
+    padding:12px 18px;border-radius:20px;
+    background:var(--dock-bg);backdrop-filter:blur(8px);
+    box-shadow:0 12px 30px rgba(2,6,23,0.18);
+    z-index:100;
   }
 
   .dock-item{
-    width:64px;height:64px;
-    display:flex;align-items:center;justify-content:center;
-    cursor:pointer;border-radius:12px;
-    transition:transform .18s ease;
-    position:relative;
+    width:64px;height:64px;display:flex;
+    align-items:center;justify-content:center;
+    cursor:pointer;transition:transform .18s;
   }
 
   .dock-item img.icon{
-    width:44px;height:44px;
-    object-fit:cover;border-radius:10px;
-    box-shadow:0 8px 16px rgba(0,0,0,0.38);
+    width:48px;height:48px;border-radius:12px;
+    box-shadow:0 6px 16px rgba(2,6,23,0.18);
   }
 
-  .dock-item:hover{
-    transform:translateY(-9px) scale(1.15);
-  }
+  .dock-item:hover { transform:translateY(-8px) scale(1.12); }
 
   .dock-item::after{
     content:attr(data-title);
-    position:absolute;
-    bottom:-38px;left:50%;transform:translateX(-50%);
-    padding:6px 8px;border-radius:8px;
-    background:rgba(8,11,22,0.92);color:#fff;
-    font-size:13px;white-space:nowrap;
-    opacity:0;transition:.12s;
+    position:absolute;bottom:-32px;left:50%;
+    transform:translateX(-50%);
+    background:rgba(0,0,0,.85);color:white;
+    padding:5px 8px;font-size:13px;border-radius:8px;
+    opacity:0;transition:.15s;white-space:nowrap;
   }
-
-  .dock-item:hover::after{
-    opacity:1;transform:translateX(-50%) translateY(-6px);
-  }
+  .dock-item:hover::after{opacity:1;transform:translateX(-50%) translateY(-5px);}
 </style>
 </head>
 
 <body>
 
-<div id="content">
-  <div class="intro">
-    <h1>Implementazione dei MacBook Air M2 nella didattica</h1>
-    <p>Seleziona un'icona nel dock qui sotto per aprire la sezione corrispondente.</p>
-  </div>
-
-  <!-- --- PANNELLI (non modificati) --- -->
-  <!-- QUI RESTA TUTTO UGUALE (Il tuo contenuto rimane) -->
-  <!-- NON SERVE RISCRIVERLO – CONTINUA A USARE IL TUO CODICE ESISTENTE -->
+<div class="intro">
+  <h1>IMPLEMENTAZIONE</h1>
+  <p>Seleziona un’icona per aprire il contenuto</p>
 </div>
 
-<!-- DOCK / BARRA -->
-<div id="dock" role="navigation" aria-label="Dock argomenti">
+<div id="content">
 
-  <div class="dock-item" data-target="slide1" data-title="Introduzione e Obiettivi">
-    <img class="icon" src="IMG_1330.JPG">
+  <!-- ESEMPIO DI CONTENUTI (riempi tu dentro) -->
+  <div id="slide1" class="slide-panel">
+    <h2>Introduzione</h2>
+    <p>Qui inserisci il contenuto della prima sezione.</p>
+    <div class="back-btn" onclick="closeAll()">Chiudi</div>
   </div>
 
-  <div class="dock-item" data-target="slide2" data-title="Tipi di Presentazione">
-    <img class="icon" src="IMG_1331.JPG">
+  <div id="slide2" class="slide-panel">
+    <h2>Tipi di Presentazione</h2>
+    <p>Contenuto della seconda sezione.</p>
+    <div class="back-btn" onclick="closeAll()">Chiudi</div>
   </div>
 
-  <div class="dock-item" data-target="slide3" data-title="Domande Integranti">
-    <img class="icon" src="IMG_1332.JPG">
+  <div id="slide3" class="slide-panel">
+    <h2>Domande Integranti</h2>
+    <p>Contenuto terza sezione.</p>
+    <div class="back-btn" onclick="closeAll()">Chiudi</div>
   </div>
 
-  <div class="dock-item" data-target="slide4" data-title="Funzioni Principali">
-    <img class="icon" src="IMG_1333.JPG">
+  <div id="slide4" class="slide-panel">
+    <h2>Funzioni</h2>
+    <p>Contenuto quarta sezione.</p>
+    <div class="back-btn" onclick="closeAll()">Chiudi</div>
   </div>
 
-  <div class="dock-item" data-target="slide5" data-title="Apple Classroom">
-    <img class="icon" src="IMG_1334.JPG">
+  <div id="slide5" class="slide-panel">
+    <h2>Apple Classroom</h2>
+    <p>Contenuto quinta sezione.</p>
+    <div class="back-btn" onclick="closeAll()">Chiudi</div>
   </div>
 
-  <div class="dock-item" data-target="slide6" data-title="Registrazione Lezioni">
-    <img class="icon" src="IMG_1335.JPG">
+  <div id="slide6" class="slide-panel">
+    <h2>Registrazione Lezioni</h2>
+    <p>Contenuto sesta sezione.</p>
+    <div class="back-btn" onclick="closeAll()">Chiudi</div>
   </div>
 
-  <div class="dock-item" data-target="slide7" data-title="Condivisione">
-    <img class="icon" src="IMG_1336.JPG">
+  <div id="slide7" class="slide-panel">
+    <h2>Condivisione</h2>
+    <p>Contenuto settima sezione.</p>
+    <div class="back-btn" onclick="closeAll()">Chiudi</div>
   </div>
 
-  <div class="dock-item" data-target="slide8" data-title="iCloud">
-    <img class="icon" src="IMG_1337.JPG">
+  <div id="slide8" class="slide-panel">
+    <h2>iCloud</h2>
+    <p>Contenuto ottava sezione.</p>
+    <div class="back-btn" onclick="closeAll()">Chiudi</div>
   </div>
 
-  <div class="dock-item" data-target="slide9" data-title="Esempi in Classe">
-    <img class="icon" src="IMG_1338.JPG">
+  <div id="slide9" class="slide-panel">
+    <h2>Esempi in Classe</h2>
+    <p>Contenuto nona sezione.</p>
+    <div class="back-btn" onclick="closeAll()">Chiudi</div>
   </div>
 
-  <div class="dock-item" data-target="slide10" data-title="Conclusione">
-    <img class="icon" src="IMG_1339.JPG">
+  <div id="slide10" class="slide-panel">
+    <h2>Conclusione</h2>
+    <p>Contenuto decima sezione.</p>
+    <div class="back-btn" onclick="closeAll()">Chiudi</div>
   </div>
+
+</div>
+
+<!-- DOCK CON LE ICONE -->
+<div id="dock">
+
+  <div class="dock-item" data-target="slide1" data-title="Introduzione"><img class="icon" src="IMG_1330.JPG"></div>
+  <div class="dock-item" data-target="slide2" data-title="Tipi di Presentazione"><img class="icon" src="IMG_1331.JPG"></div>
+  <div class="dock-item" data-target="slide3" data-title="Domande Integranti"><img class="icon" src="IMG_1332.JPG"></div>
+  <div class="dock-item" data-target="slide4" data-title="Funzioni"><img class="icon" src="IMG_1333.JPG"></div>
+  <div class="dock-item" data-target="slide5" data-title="Classroom"><img class="icon" src="IMG_1334.JPG"></div>
+  <div class="dock-item" data-target="slide6" data-title="Registrazione"><img class="icon" src="IMG_1335.JPG"></div>
+  <div class="dock-item" data-target="slide7" data-title="Condivisione"><img class="icon" src="IMG_1336.JPG"></div>
+  <div class="dock-item" data-target="slide8" data-title="iCloud"><img class="icon" src="IMG_1337.JPG"></div>
+  <div class="dock-item" data-target="slide9" data-title="Esempi"><img class="icon" src="IMG_1338.JPG"></div>
+  <div class="dock-item" data-target="slide10" data-title="Conclusione"><img class="icon" src="IMG_1353.JPG"></div>
 
 </div>
 
 <script>
   const items=document.querySelectorAll('.dock-item');
   items.forEach(it=>{
-    it.onclick=()=>{
+    it.addEventListener('click', ()=>{
       document.querySelectorAll('.slide-panel').forEach(p=>p.style.display='none');
-      document.getElementById(it.dataset.target).style.display='block';
-      window.scrollTo({top:0,behavior:'smooth'});
-    };
+      const target=document.getElementById(it.dataset.target);
+      if(target){ target.style.display='block'; target.scrollIntoView({behavior:"smooth"}); }
+    });
   });
-  function closeAll(){document.querySelectorAll('.slide-panel').forEach(p=>p.style.display='none');}
+
+  function closeAll(){
+    document.querySelectorAll('.slide-panel').forEach(p=>p.style.display='none');
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
 </script>
 
 </body>
