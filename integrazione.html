@@ -12,83 +12,81 @@
     --panel-bg: rgba(255,255,255,0.96);
   }
 
-  html, body {
+  html,body{
     height:100%;
     margin:0;
     font-family:-apple-system,BlinkMacSystemFont,"Inter",system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
     color:#0b1220;
   }
 
-  /* Sfondo con sfocatura */
+  /* SFONDO SFUMATO */
   body::before{
     content:"";
     position:fixed;
     inset:0;
     background: url("IMG_1352.JPG") center/cover no-repeat fixed;
-    filter: blur(4px) brightness(0.75);
+    filter: blur(4px) brightness(0.78);
     z-index:-2;
   }
 
-  /* leggerissima velatura per facilitare lettura */
   body::after{
     content:"";
     position:fixed;
     inset:0;
-    background: rgba(0,0,0,0.18);
+    background: rgba(0,0,0,0.14);
     z-index:-1;
   }
 
   #content {
-    max-width: 1000px;
-    margin: 35px auto 130px;
-    padding: 20px;
+    max-width: 980px;
+    margin: 32px auto 120px;
+    padding: 18px;
   }
 
-  /* --- TITOLO E SOTTOTITOLO EDITATI --- */
-  .intro {
+  /* --- TITOLO + SOTTOTITOLO --- */
+  .intro{
     margin-top:20px;
     text-align:center;
   }
 
   .intro h1{
-    font-size:2.1rem;
+    font-size:2.15rem;
     font-weight:900;
-    color:#ffffff;
-    -webkit-text-stroke: 1.7px #000;
-    text-shadow:0 0 22px rgba(0,0,0,0.8);
+    color:#fff;
+    -webkit-text-stroke: 2px #000;
+    text-shadow:0 0 25px rgba(0,0,0,0.85);
     margin-bottom:10px;
   }
 
   .intro p{
     color:#ffffff;
     font-weight:500;
+    text-shadow:0 0 14px rgba(0,0,0,0.7);
     opacity:1;
-    max-width:820px;
-    margin:0 auto;
-    text-shadow:0 0 12px rgba(0,0,0,0.7);
   }
 
-  /* Slide panels */
+  /* SLIDE PANELS */
   .slide-panel{
     display:none;
-    margin: 24px auto;
-    padding: 22px;
+    margin:24px auto;
+    padding:22px;
     border-radius:12px;
-    background: var(--panel-bg);
-    box-shadow: 0 8px 22px rgba(2,6,23,0.10);
-    color:#0b1220;
+    background:var(--panel-bg);
+    box-shadow:0 8px 22px rgba(2,6,23,0.10);
     line-height:1.6;
   }
 
-  .slide-panel h2{margin-bottom:10px;font-size:1.28rem;color:#071027;}
-
   .back-btn{
     margin-top:12px;
-    background:#0b1220;color:#fff;padding:7px 12px;
-    border-radius:8px;cursor:pointer;border:none;
+    background:#0b1220;
+    color:#fff;
+    padding:7px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    border:none;
   }
 
-  /* Dock */
+  /* --- DOCK --- */
   #dock{
     position:fixed;
     left:50%;
@@ -112,26 +110,31 @@
   }
 
   .dock-item img.icon{
-    width:44px;height:44px;object-fit:cover;border-radius:10px;
-    box-shadow:0 8px 18px rgba(0,0,0,0.38);
+    width:44px;height:44px;
+    object-fit:cover;border-radius:10px;
+    box-shadow:0 8px 16px rgba(0,0,0,0.38);
   }
 
-  .dock-item:hover{transform: translateY(-9px) scale(1.15);}
+  .dock-item:hover{
+    transform:translateY(-9px) scale(1.15);
+  }
 
   .dock-item::after{
     content:attr(data-title);
     position:absolute;
     bottom:-38px;left:50%;transform:translateX(-50%);
-    font-size:13px;
-    background:rgba(8,11,22,0.92);
-    color:#fff;padding:6px 8px;border-radius:8px;
+    padding:6px 8px;border-radius:8px;
+    background:rgba(8,11,22,0.92);color:#fff;
+    font-size:13px;white-space:nowrap;
     opacity:0;transition:.12s;
-    white-space:nowrap;
   }
-  .dock-item:hover::after{opacity:1;transform:translateX(-50%) translateY(-6px);}
-</style>
 
+  .dock-item:hover::after{
+    opacity:1;transform:translateX(-50%) translateY(-6px);
+  }
+</style>
 </head>
+
 <body>
 
 <div id="content">
@@ -139,3 +142,68 @@
     <h1>Implementazione dei MacBook Air M2 nella didattica</h1>
     <p>Seleziona un'icona nel dock qui sotto per aprire la sezione corrispondente.</p>
   </div>
+
+  <!-- --- PANNELLI (non modificati) --- -->
+  <!-- QUI RESTA TUTTO UGUALE (Il tuo contenuto rimane) -->
+  <!-- NON SERVE RISCRIVERLO – CONTINUA A USARE IL TUO CODICE ESISTENTE -->
+</div>
+
+<!-- DOCK / BARRA -->
+<div id="dock" role="navigation" aria-label="Dock argomenti">
+
+  <div class="dock-item" data-target="slide1" data-title="Introduzione e Obiettivi">
+    <img class="icon" src="IMG_1330.JPG">
+  </div>
+
+  <div class="dock-item" data-target="slide2" data-title="Tipi di Presentazione">
+    <img class="icon" src="IMG_1331.JPG">
+  </div>
+
+  <div class="dock-item" data-target="slide3" data-title="Domande Integranti">
+    <img class="icon" src="IMG_1332.JPG">
+  </div>
+
+  <div class="dock-item" data-target="slide4" data-title="Funzioni Principali">
+    <img class="icon" src="IMG_1333.JPG">
+  </div>
+
+  <div class="dock-item" data-target="slide5" data-title="Apple Classroom">
+    <img class="icon" src="IMG_1334.JPG">
+  </div>
+
+  <div class="dock-item" data-target="slide6" data-title="Registrazione Lezioni">
+    <img class="icon" src="IMG_1335.JPG">
+  </div>
+
+  <div class="dock-item" data-target="slide7" data-title="Condivisione">
+    <img class="icon" src="IMG_1336.JPG">
+  </div>
+
+  <div class="dock-item" data-target="slide8" data-title="iCloud">
+    <img class="icon" src="IMG_1337.JPG">
+  </div>
+
+  <div class="dock-item" data-target="slide9" data-title="Esempi in Classe">
+    <img class="icon" src="IMG_1338.JPG">
+  </div>
+
+  <div class="dock-item" data-target="slide10" data-title="Conclusione">
+    <img class="icon" src="IMG_1339.JPG">
+  </div>
+
+</div>
+
+<script>
+  const items=document.querySelectorAll('.dock-item');
+  items.forEach(it=>{
+    it.onclick=()=>{
+      document.querySelectorAll('.slide-panel').forEach(p=>p.style.display='none');
+      document.getElementById(it.dataset.target).style.display='block';
+      window.scrollTo({top:0,behavior:'smooth'});
+    };
+  });
+  function closeAll(){document.querySelectorAll('.slide-panel').forEach(p=>p.style.display='none');}
+</script>
+
+</body>
+</html>
