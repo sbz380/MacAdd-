@@ -12,302 +12,130 @@
     --panel-bg: rgba(255,255,255,0.96);
   }
 
-  html,body{
+  html, body {
     height:100%;
     margin:0;
-    font-family:-apple-system, BlinkMacSystemFont, "Inter", system-ui, Segoe UI, Roboto, "Helvetica Neue", Arial;
+    font-family:-apple-system,BlinkMacSystemFont,"Inter",system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
     color:#0b1220;
   }
 
-  /* Sfondo sfocato ma testo nitido */
-  body{
-    background:none;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-  }
-
+  /* Sfondo con sfocatura */
   body::before{
     content:"";
     position:fixed;
     inset:0;
     background: url("IMG_1352.JPG") center/cover no-repeat fixed;
-    filter: blur(3px) brightness(0.78);
+    filter: blur(4px) brightness(0.75);
     z-index:-2;
   }
 
+  /* leggerissima velatura per facilitare lettura */
   body::after{
     content:"";
     position:fixed;
     inset:0;
-    background: rgba(255,255,255,0.02);
+    background: rgba(0,0,0,0.18);
     z-index:-1;
   }
 
-  #content{
-    max-width: 980px;
-    margin: 32px auto 120px;
-    padding: 18px;
+  #content {
+    max-width: 1000px;
+    margin: 35px auto 130px;
+    padding: 20px;
   }
 
-  /* ---- TESTO DI TESTA (RICHIESTO) ---- */
-
-  .white-outline-title {
-    color: #ffffff;
-    font-weight: 800;
-    font-size: 2rem;
-    text-align: center;
-    text-shadow:
-      -2px -2px 0 #000,
-       2px -2px 0 #000,
-      -2px  2px 0 #000,
-       2px  2px 0 #000;
-    margin-top: 28px;
-    margin-bottom: 4px;
+  /* --- TITOLO E SOTTOTITOLO EDITATI --- */
+  .intro {
+    margin-top:20px;
+    text-align:center;
   }
 
-  .white-outline-small {
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 1rem;
-    text-align: center;
-    text-shadow:
-      -1px -1px 0 #000,
-       1px -1px 0 #000,
-      -1px  1px 0 #000,
-       1px  1px 0 #000;
-    margin-bottom: 28px;
+  .intro h1{
+    font-size:2.1rem;
+    font-weight:900;
+    color:#ffffff;
+    -webkit-text-stroke: 1.7px #000;
+    text-shadow:0 0 22px rgba(0,0,0,0.8);
+    margin-bottom:10px;
   }
 
+  .intro p{
+    color:#ffffff;
+    font-weight:500;
+    opacity:1;
+    max-width:820px;
+    margin:0 auto;
+    text-shadow:0 0 12px rgba(0,0,0,0.7);
+  }
+
+  /* Slide panels */
+  .slide-panel{
+    display:none;
+    margin: 24px auto;
+    padding: 22px;
+    border-radius:12px;
+    background: var(--panel-bg);
+    box-shadow: 0 8px 22px rgba(2,6,23,0.10);
+    color:#0b1220;
+    line-height:1.6;
+  }
+
+  .slide-panel h2{margin-bottom:10px;font-size:1.28rem;color:#071027;}
+
+  .back-btn{
+    margin-top:12px;
+    background:#0b1220;color:#fff;padding:7px 12px;
+    border-radius:8px;cursor:pointer;border:none;
+  }
+
+  /* Dock */
+  #dock{
+    position:fixed;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:24px;
+    display:flex;
+    gap:14px;
+    padding:10px 18px;
+    background:var(--dock-bg);
+    border-radius:20px;
+    box-shadow:0 12px 30px rgba(2,6,23,0.22);
+    z-index:80;
+  }
+
+  .dock-item{
+    width:64px;height:64px;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;border-radius:12px;
+    transition:transform .18s ease;
+    position:relative;
+  }
+
+  .dock-item img.icon{
+    width:44px;height:44px;object-fit:cover;border-radius:10px;
+    box-shadow:0 8px 18px rgba(0,0,0,0.38);
+  }
+
+  .dock-item:hover{transform: translateY(-9px) scale(1.15);}
+
+  .dock-item::after{
+    content:attr(data-title);
+    position:absolute;
+    bottom:-38px;left:50%;transform:translateX(-50%);
+    font-size:13px;
+    background:rgba(8,11,22,0.92);
+    color:#fff;padding:6px 8px;border-radius:8px;
+    opacity:0;transition:.12s;
+    white-space:nowrap;
+  }
+  .dock-item:hover::after{opacity:1;transform:translateX(-50%) translateY(-6px);}
 </style>
+
 </head>
 <body>
-
-<div class="intro">
-  <h1 class="white-outline-title">Implementazione</h1>
-  <p class="white-outline-small">Seleziona una icona</p>
-</div>
 
 <div id="content">
   <div class="intro">
     <h1>Implementazione dei MacBook Air M2 nella didattica</h1>
-    <p>
-      Seleziona un'icona nel dock qui sotto per aprire la sezione corrispondente. Le icone si ingrandiscono al passaggio: clicca per leggere il testo completo.
-    </p>
+    <p>Seleziona un'icona nel dock qui sotto per aprire la sezione corrispondente.</p>
   </div>
-
-  <!-- Slide panels (hidden by default) -->
-  <div id="slide1" class="slide-panel" aria-hidden="true">
-    <h2>Introduzione e Obiettivi</h2>
-    <p><strong>Benvenuti a questa video lezione dedicata all’integrazione dei MacBook Air M2 nella didattica quotidiana della nostra scuola.</strong></p>
-    <p>Oggi affronteremo insieme un percorso che ci porterà a scoprire come questi strumenti possano diventare alleati preziosi per migliorare l’efficacia delle nostre lezioni, semplificare la gestione delle attività e, soprattutto, rendere l’apprendimento più interattivo e coinvolgente per i nostri studenti.</p>
-    <p><strong>Obiettivi principali:</strong></p>
-    <ul>
-      <li><b>Fornire una panoramica</b> sulle potenzialità dei MacBook Air M2 nella didattica.</li>
-      <li><b>Illustrare le funzioni principali</b> e le configurazioni utili per l’uso in classe.</li>
-      <li><b>Spiegare come registrare le lezioni</b> con strumenti come QuickTime Player.</li>
-      <li><b>Condividere metodi pratici</b> per la condivisione dei file e la collaborazione tra docenti e studenti.</li>
-      <li><b>Offrire esempi concreti</b> di utilizzo in classe e strumenti per una presentazione efficace.</li>
-    </ul>
-    <button class="back-btn" onclick="closeAll()">← Indietro</button>
-  </div>
-
-  <div id="slide2" class="slide-panel" aria-hidden="true">
-    <h2>1. Tipi di Presentazione</h2>
-    <p>I MacBook Air M2 ci permettono di utilizzare diversi formati di presentazione, tra cui:</p>
-    <ul>
-      <li><b>Classroom</b>: per la registrazione e condivisione di file in tempo reale.</li>
-      <li><b>Presentazioni interattive</b>: con strumenti come Keynote o PowerPoint, che permettono di coinvolgere attivamente gli studenti (ad esempio con quiz, sondaggi o lavagne condivise).</li>
-      <li><b>Collaborazione in gruppo</b>: grazie a funzioni come la condivisione dello schermo o l’uso di app come Pages o Numbers per progetti collettivi.</li>
-    </ul>
-    <button class="back-btn" onclick="closeAll()">← Indietro</button>
-  </div>
-
-  <div id="slide3" class="slide-panel" aria-hidden="true">
-    <h2>2. Domande Integranti</h2>
-    <p>Prima di addentrarci nei dettagli tecnici, poniamoci alcune domande chiave:</p>
-    <ul>
-      <li>Come possiamo <b>integrare i MacBook</b> nelle nostre lezioni senza stravolgere la routine?</li>
-      <li>Quali sono i <b>vantaggi concreti</b> per docenti e studenti?</li>
-      <li>Come possiamo <b>garantire accessibilità e organizzazione</b> dei materiali per tutti?</li>
-    </ul>
-    <button class="back-btn" onclick="closeAll()">← Indietro</button>
-  </div>
-
-  <div id="slide4" class="slide-panel" aria-hidden="true">
-    <h2>3. Funzioni Principali dei MacBook Air M2</h2>
-    <p>I MacBook Air M2 offrono funzionalità che li rendono ideali per la didattica:</p>
-    <ul>
-      <li><b>Monitoraggio delle attività studentesche</b>: tramite app come Apple Classroom, che permettono di visualizzare i progressi e intervenire in tempo reale.</li>
-      <li><b>Condivisione di materiali</b>: in pochi clic, è possibile inviare file, link o risorse a tutta la classe.</li>
-      <li><b>Stesura di appunti digitali</b>: con app come Notes o Notability, che permettono di scrivere, disegnare e archiviare appunti in modo organizzato.</li>
-    </ul>
-    <button class="back-btn" onclick="closeAll()">← Indietro</button>
-  </div>
-
-  <div id="slide5" class="slide-panel" aria-hidden="true">
-    <h2>4. Configurazione e Utilizzo di Apple Classroom</h2>
-    <p><b>Apple Classroom</b> è uno strumento potente per gestire la classe digitalmente. Ecco come configurarlo:</p>
-    <ul>
-      <li><b>Scaricare Apple Classroom</b> dall’App Store.</li>
-      <li><b>Creare una classe e aggiungere gli studenti</b>: tramite invito o codice di accesso.</li>
-      <li><b>Utilizzare la funzione "Blocca App"</b> per mantenere l’attenzione durante le spiegazioni.</li>
-      <li><b>Condividere materiali</b>: come PDF, presentazioni o link utili.</li>
-    </ul>
-    <p><b>Vantaggi:</b></p>
-    <ul>
-      <li><b>Risparmio di tempo</b> nella gestione delle attività.</li>
-      <li><b>Maggiore interazione</b> con gli studenti.</li>
-      <li><b>Archiviazione automatica</b> delle lezioni e dei materiali.</li>
-    </ul>
-    <button class="back-btn" onclick="closeAll()">← Indietro</button>
-  </div>
-
-  <div id="slide6" class="slide-panel" aria-hidden="true">
-    <h2>5. Registrazione delle Lezioni con QuickTime Player</h2>
-    <p>La registrazione delle lezioni è un ottimo modo per permettere agli studenti di rivedere i concetti a casa o recuperare in caso di assenza. Ecco come fare:</p>
-    <ul>
-      <li><b>Aprire QuickTime Player</b> e selezionare "Nuova registrazione schermo".</li>
-      <li><b>Selezionare l’audio</b> (microfono integrato o esterno).</li>
-      <li><b>Avviare la registrazione</b> e salvare il file in formato video.</li>
-      <li><b>Caricare il file</b> su piattaforme come iCloud Drive, Google Classroom o il registro elettronico.</li>
-    </ul>
-    <p><b>Suggerimenti:</b></p>
-    <ul>
-      <li>Utilizzare un microfono esterno per una migliore qualità audio.</li>
-      <li>Salvare i file con nomi chiari (es. "Lezione_Matematica_15Ottobre").</li>
-    </ul>
-    <button class="back-btn" onclick="closeAll()">← Indietro</button>
-  </div>
-
-  <div id="slide7" class="slide-panel" aria-hidden="true">
-    <h2>6. Metodi di Condivisione dei File</h2>
-    <p>Con i MacBook Air M2, la condivisione dei file diventa semplice e immediata:</p>
-    <ul>
-      <li><b>iCloud Drive</b>: per salvare e condividere documenti in tempo reale.</li>
-      <li><b>AirDrop</b>: per trasferire file velocemente tra dispositivi Apple vicini.</li>
-      <li><b>Email o messaggi</b>: per inviare documenti o link a studenti e colleghi.</li>
-    </ul>
-    <p><b>Esempio pratico:</b> durante una lezione, potete creare un documento condiviso su Pages, dove gli studenti possano aggiungere appunti o domande in tempo reale.</p>
-    <button class="back-btn" onclick="closeAll()">← Indietro</button>
-  </div>
-
-  <div id="slide8" class="slide-panel" aria-hidden="true">
-    <h2>7. Utilizzo di iCloud per la Didattica</h2>
-    <p>iCloud offre strumenti utilissimi per la didattica:</p>
-    <ul>
-      <li><b>Condivisioni in tempo reale</b>: più persone possono lavorare sullo stesso documento.</li>
-      <li><b>Accesso da qualsiasi dispositivo</b>: gli studenti possono continuare a studiare da casa.</li>
-      <li><b>Backup automatico</b>: nessun rischio di perdere i materiali.</li>
-    </ul>
-    <p><b>Strumenti consigliati:</b> Pages per documenti di testo, Numbers per fogli di calcolo, Keynote per presentazioni interattive.</p>
-    <button class="back-btn" onclick="closeAll()">← Indietro</button>
-  </div>
-
-  <div id="slide9" class="slide-panel" aria-hidden="true">
-    <h2>8. Esempi di Utilizzo in Classe</h2>
-    <p>Ecco alcuni esempi pratici di come utilizzare i MacBook Air M2 durante le lezioni:</p>
-    <ul>
-      <li><b>Lezioni interattive</b>: con app come Keynote o Nearpod, che permettono di inserire quiz, sondaggi o video.</li>
-      <li><b>Progetti collaborativi</b>: gli studenti possono lavorare insieme su un documento condiviso.</li>
-      <li><b>Archivio digitale</b>: tutti i materiali delle lezioni sono organizzati e accessibili in qualsiasi momento.</li>
-    </ul>
-    <button class="back-btn" onclick="closeAll()">← Indietro</button>
-  </div>
-
-  <div id="slide10" class="slide-panel" aria-hidden="true">
-    <h2>9. Conclusione e Prossimi Passi</h2>
-    <p>Per concludere, l’integrazione dei MacBook Air M2 nella didattica rappresenta un’opportunità straordinaria per innovare il nostro modo di insegnare e apprendere.</p>
-    <p>Con gli strumenti giusti e una buona organizzazione, possiamo rendere le lezioni più interattive, collaborative e accessibili. Vi invito a sperimentare queste funzionalità e a condividere le vostre esperienze con i colleghi. Se avete domande o dubbi, non esitate a contattarmi: sarò felice di aiutarvi a sfruttare al meglio queste risorse!</p>
-    <button class="back-btn" onclick="closeAll()">← Indietro</button>
-  </div>
-
-</div>
-
-<!-- small hint above dock (kept hidden by default) -->
-<div id="hint" aria-hidden="true"></div>
-
-<!-- DOCK -->
-<div id="dock" role="navigation" aria-label="Dock argomenti">
-
-  <!-- Use images IMG_1330.JPG -> IMG_1339.JPG as small icons (they must be in same folder as this HTML) -->
-  <div class="dock-item" data-target="slide1" data-title="Introduzione e Obiettivi" role="button" tabindex="0" aria-controls="slide1">
-    <img src="IMG_1330.JPG" alt="Intro" class="icon">
-  </div>
-
-  <div class="dock-item" data-target="slide2" data-title="Tipi di Presentazione" role="button" tabindex="0" aria-controls="slide2">
-    <img src="IMG_1331.JPG" alt="Presentazioni" class="icon">
-  </div>
-
-  <div class="dock-item" data-target="slide3" data-title="Domande Integranti" role="button" tabindex="0" aria-controls="slide3">
-    <img src="IMG_1332.JPG" alt="Domande" class="icon">
-  </div>
-
-  <div class="dock-item" data-target="slide4" data-title="Funzioni Principali" role="button" tabindex="0" aria-controls="slide4">
-    <img src="IMG_1333.JPG" alt="Funzioni" class="icon">
-  </div>
-
-  <div class="dock-item" data-target="slide5" data-title="Apple Classroom" role="button" tabindex="0" aria-controls="slide5">
-    <img src="IMG_1334.JPG" alt="Classroom" class="icon">
-  </div>
-
-  <div class="dock-item" data-target="slide6" data-title="Registrazione con QuickTime" role="button" tabindex="0" aria-controls="slide6">
-    <img src="IMG_1335.JPG" alt="QuickTime" class="icon">
-  </div>
-
-  <div class="dock-item" data-target="slide7" data-title="Metodi di Condivisione" role="button" tabindex="0" aria-controls="slide7">
-    <img src="IMG_1336.JPG" alt="Condivisione" class="icon">
-  </div>
-
-  <div class="dock-item" data-target="slide8" data-title="Uso di iCloud" role="button" tabindex="0" aria-controls="slide8">
-    <img src="IMG_1337.JPG" alt="iCloud" class="icon">
-  </div>
-
-  <div class="dock-item" data-target="slide9" data-title="Esempi in Classe" role="button" tabindex="0" aria-controls="slide9">
-    <img src="IMG_1338.JPG" alt="Esempi" class="icon">
-  </div>
-
-  <div class="dock-item" data-target="slide10" data-title="Conclusione e Prossimi Passi" role="button" tabindex="0" aria-controls="slide10">
-    <img src="IMG_1339.JPG" alt="Conclusione" class="icon">
-  </div>
-
-</div>
-
-<script>
-  // restore original behavior: click dock-item -> show panel -> dock remains visible
-  const items = document.querySelectorAll('.dock-item');
-  items.forEach(it=>{
-    it.addEventListener('click', ()=>{
-      const id = it.getAttribute('data-target');
-      // hide any visible panels
-      document.querySelectorAll('.slide-panel').forEach(p => { p.style.display = 'none'; p.setAttribute('aria-hidden','true'); });
-      // show target panel
-      const panel = document.getElementById(id);
-      if(panel){
-        panel.style.display = 'block';
-        panel.setAttribute('aria-hidden','false');
-        // scroll to panel
-        panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    });
-    // keyboard accessibility: Enter/Space opens
-    it.addEventListener('keydown', (e)=>{
-      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); it.click(); }
-    });
-  });
-
-  // close/hide all slide panels
-  function closeAll(){
-    document.querySelectorAll('.slide-panel').forEach(p => { p.style.display='none'; p.setAttribute('aria-hidden','true'); });
-    // scroll up a bit to show intro
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // Optional: show short hint briefly on first load (disabled by default)
-  // document.getElementById('hint').textContent = "Seleziona un'icona per aprire la sezione";
-  // const hint = document.getElementById('hint');
-  // hint.style.display = 'block';
-  // setTimeout(()=> hint.style.display = 'none', 3800);
-</script>
-
-</body>
-</html>
