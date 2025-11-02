@@ -10,13 +10,34 @@
     --dock-bg: rgba(255,255,255,0.78);
     --panel-bg: rgba(255,255,255,0.88);
   }
-  html,body{height:100%;margin:0;font-family:-apple-system,BlinkMacSystemFont,"Inter",system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;}
-  body{
-    background: url("IMG_1352.JPG") center/cover no-repeat fixed;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    color:#0f172a;
-  }
+  html,body{
+  height:100%;
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Inter",system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+}
+
+body{
+  background: url("IMG_1352.JPG") center/cover no-repeat fixed;
+  filter: blur(4px) brightness(0.75);
+  -webkit-filter: blur(4px) brightness(0.75);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  color:#0f172a;
+}
+/* Questo serve per evitare che il testo venga sfocato anche lui */
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background: url("IMG_1352.JPG") center/cover no-repeat fixed;
+  filter: blur(8px) brightness(0.6);
+  z-index:-1;
+}
 
   /* Container sopra l'immagine per rendere testo leggibile */
   #overlay {
