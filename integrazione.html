@@ -3,38 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Formazione MacBook Air M2</title>
+<title>Implementazione Apple MacBook Air M2</title>
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
 body {
-  margin:0; 
-  font-family:-apple-system,BlinkMacSystemFont,"Inter",system-ui,Roboto,Arial;
-  color:#0b1220;
+  margin:0;
+  font-family:-apple-system, BlinkMacSystemFont, "Inter", system-ui, Roboto, Arial;
+  color:#0a0f1a;
 }
 
-/* SFONDO MORBIDO */
+/* SFONDO SFUMATO */
 body::before {
   content:"";
   position:fixed;
   inset:0;
   background:url("IMG_1352.JPG") center/cover no-repeat;
-  filter:blur(6px) brightness(0.68);
+  filter:blur(7px) brightness(0.63);
   z-index:-1;
 }
 
-/* CONTENITORE */
+/* CONTENITORE PRINCIPALE */
 main {
-  max-width:980px;
-  margin:40px auto 120px;
-  padding:20px;
-  background:rgba(255,255,255,0.82);
-  border-radius:14px;
-  backdrop-filter:blur(8px);
-  box-shadow:0 6px 28px rgba(0,0,0,0.25);
+  max-width:900px;
+  margin:40px auto 140px;
+  padding:28px;
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(10px);
+  border-radius:16px;
+  box-shadow:0 10px 32px rgba(0,0,0,0.35);
 }
 
-/* SEZIONI CON TRANSIZIONE (Modalità A) */
+/* TITOLO CONTORNATO */
+.title-outline {
+  font-size:38px;
+  font-weight:900;
+  text-align:center;
+  color:white;
+  -webkit-text-stroke:2px black;
+  margin-bottom:25px;
+  letter-spacing:1px;
+}
+
+/* SLIDE + TRANSIZIONE (Modalità A) */
 .section {
   display:none;
   opacity:0;
@@ -47,19 +58,19 @@ main {
   transform:translateY(0);
 }
 
-/* DOCK */
+/* DOCK STILE MAC */
 #dock {
   position:fixed;
+  bottom:25px;
   left:50%;
   transform:translateX(-50%);
-  bottom:24px;
   display:flex;
-  gap:18px;
-  background:rgba(255,255,255,0.25);
-  padding:12px 22px;
-  backdrop-filter:blur(24px) saturate(1.5);
-  border-radius:30px;
-  box-shadow:0 12px 30px rgba(0,0,0,0.35);
+  gap:20px;
+  padding:14px 26px;
+  background:rgba(255,255,255,0.22);
+  backdrop-filter:blur(20px) saturate(1.8);
+  border-radius:32px;
+  box-shadow:0 14px 40px rgba(0,0,0,0.45);
 }
 
 .dock-item {
@@ -69,32 +80,30 @@ main {
   justify-content:center;
   align-items:center;
   cursor:pointer;
-  transition:transform .25s;
+  transition:transform .25s ease;
   position:relative;
 }
 .dock-item:hover {
-  transform:scale(1.55) translateY(-6px);
-  z-index:999;
+  transform:scale(1.55) translateY(-8px);
 }
 
 /* TOOLTIP */
 .dock-item::after {
   content:attr(data-title);
   position:absolute;
-  bottom:-38px;
+  bottom:-36px;
   left:50%;
   transform:translateX(-50%);
+  color:white;
+  font-weight:600;
   font-size:13px;
-  font-weight:700;
-  color:#fff;
+  background:rgba(0,0,0,0.7);
   padding:6px 10px;
   border-radius:6px;
-  background:rgba(0,0,0,0.75);
   opacity:0;
-  transition:opacity .2s;
+  transition:opacity .2s ease;
 }
 .dock-item:hover::after { opacity:1; }
-
 </style>
 </head>
 
@@ -102,90 +111,76 @@ main {
 
 <main>
 
+<h1 class="title-outline">IMPLEMENTAZIONE APPLE MACBOOK AIR M2</h1>
+
 <!-- SLIDE 1 -->
 <div id="slide1" class="section active">
-<h1 class="text-2xl font-bold mb-3">Introduzione e Obiettivi</h1>
+<h2 class="text-xl font-bold mb-3">Introduzione e Obiettivi</h2>
 <p>
-Benvenuti a questa video lezione dedicata all’integrazione dei MacBook Air M2 nella didattica quotidiana della nostra scuola. 
+Questa presentazione ha lo scopo di mostrare come il MacBook Air M2 possa essere integrato in modo fluido e efficace nella nostra pratica didattica quotidiana. L’obiettivo non è cambiare ciò che facciamo, ma potenziarlo, rendendo le lezioni più chiare, organizzate e coinvolgenti, attraverso strumenti intuitivi e rapidi da utilizzare sia in classe che nella preparazione delle attività.
 </p>
-
-<ul class="list-disc ml-6 mt-3">
-<li>Fornire una panoramica sulle potenzialità didattiche</li>
-<li>Illustrare le funzioni utili in classe</li>
-<li>Registrazione delle lezioni</li>
-<li>Metodi di condivisione e collaborazione</li>
-</ul>
 </div>
 
 <!-- SLIDE 2 -->
 <div id="slide2" class="section">
-<h1 class="text-2xl font-bold mb-3">Tipi di Presentazione</h1>
-<p>I MacBook Air M2 permettono di creare presentazioni efficaci con:</p>
-<ul class="list-disc ml-6 mt-3">
-<li>Apple Classroom</li>
-<li>Keynote e presentazioni interattive</li>
-<li>Lavori condivisi in tempo reale</li>
-</ul>
+<h2 class="text-xl font-bold mb-3">Tipi di Presentazione</h2>
+<p>
+Il MacBook Air permette di creare lezioni strutturate attraverso presentazioni dinamiche. Possiamo utilizzare Keynote o PowerPoint per guidare il discorso, includendo immagini, video, mappe concettuali, e persino momenti interattivi. L’idea è trasformare la presentazione in un percorso narrativo che sostiene la spiegazione e mantiene attiva l’attenzione.
+</p>
 <img src="IMG_1328.JPG" class="mt-4 rounded shadow">
 </div>
 
 <!-- SLIDE 3 -->
 <div id="slide3" class="section">
-<h1 class="text-2xl font-bold mb-3">Domande Integranti</h1>
-<p>Prima di utilizzare in classe, poniamo alcuni interrogativi chiave:</p>
-<ul class="list-disc ml-6 mt-3">
-<li>Come integrare i Mac senza stravolgere la routine?</li>
-<li>Quali vantaggi concreti per la lezione?</li>
-<li>Come garantire chiarezza e accessibilità dei materiali?</li>
-</ul>
+<h2 class="text-xl font-bold mb-3">Domande Integranti</h2>
+<p>
+Prima di adottare nuovi strumenti è utile chiedersi cosa essi aggiungano al processo formativo. In questo caso la domanda centrale diventa: come questa tecnologia aiuta il docente a comunicare meglio e lo studente a comprendere più a fondo? È il senso educativo a guidare l’uso degli strumenti, non il contrario.
+</p>
 <img src="IMG_1329.JPG" class="mt-4 rounded shadow">
 </div>
 
 <!-- SLIDE 4 -->
 <div id="slide4" class="section">
-<h1 class="text-2xl font-bold mb-3">Funzioni Principali dei MacBook Air M2</h1>
-<ul class="list-disc ml-6 mt-3">
-<li>Monitoraggio attività studenti</li>
-<li>Condivisione immediata materiali</li>
-<li>Appunti digitali organizzati</li>
-</ul>
+<h2 class="text-xl font-bold mb-3">Funzioni Principali</h2>
+<p>
+Il MacBook Air M2 facilita la gestione delle lezioni, permette l’annotazione rapida, la condivisione chiara dei materiali, la strutturazione dei contenuti e il coinvolgimento diretto degli studenti. È uno strumento progettato per sostenere il flusso naturale del lavoro docente senza complicarlo.
+</p>
 <img src="IMG_1330.JPG" class="mt-4 rounded shadow">
 </div>
 
 <!-- SLIDE 5 -->
 <div id="slide5" class="section">
-<h1 class="text-2xl font-bold mb-3">Apple Classroom</h1>
-<p>Gestione della classe digitale:</p>
-<ul class="list-disc ml-6 mt-3">
-<li>Creazione classi</li>
-<li>Blocca App durante spiegazioni</li>
-<li>Condivisione file in tempo reale</li>
-</ul>
+<h2 class="text-xl font-bold mb-3">Apple Classroom</h2>
+<p>
+Apple Classroom permette al docente di accompagnare gli studenti mentre lavorano: si possono vedere gli schermi, inviare materiali, bloccare le applicazioni per ridurre le distrazioni e mantenere un clima di lavoro ordinato, attento e partecipato.
+</p>
 <img src="IMG_1331.JPG" class="mt-4 rounded shadow">
 </div>
 
 <!-- SLIDE 6 -->
 <div id="slide6" class="section">
-<h1 class="text-2xl font-bold mb-3">Registrazione Lezioni con QuickTime</h1>
-<p>Permette revisione e recupero.</p>
+<h2 class="text-xl font-bold mb-3">Registrazione delle Lezioni</h2>
+<p>
+QuickTime consente di registrare lo schermo e la voce in modo semplice e immediato, permettendo agli studenti di rivedere e interiorizzare i contenuti anche in momenti successivi. È una risorsa preziosa soprattutto per chi ha bisogno di tempi di recupero o approfondimento diversi.
+</p>
 <img src="IMG_1332.JPG" class="mt-4 rounded shadow">
 </div>
 
 <!-- SLIDE 7 -->
 <div id="slide7" class="section">
-<h1 class="text-2xl font-bold mb-3">Condivisione dei File</h1>
-<ul class="list-disc ml-6 mt-3">
-<li>iCloud Drive</li>
-<li>AirDrop</li>
-<li>Documenti condivisi in Pages</li>
-</ul>
+<h2 class="text-xl font-bold mb-3">Condivisione dei File</h2>
+<p>
+Attraverso iCloud e AirDrop il materiale didattico può essere condiviso senza complicazioni, senza allegati infiniti o problemi di compatibilità. Tutto rimane ordinato, rintracciabile e condivisibile in modo collaborativo.
+</p>
 <img src="IMG_1335.JPG" class="mt-4 rounded shadow">
 </div>
 
 <!-- SLIDE 8 -->
 <div id="slide8" class="section">
-<h1 class="text-2xl font-bold mb-3">Conclusione</h1>
-<p>I MacBook Air M2 offrono strumenti adatti a lezioni più chiare, collaborative e coinvolgenti.</p>
+<h2 class="text-xl font-bold mb-3">Conclusione</h2>
+<p>
+L’uso del MacBook Air M2 non sostituisce la relazione educativa, ma la sostiene. La didattica resta centrata sulla persona, mentre la tecnologia ne diventa un supporto concreto e fluido.
+</p>
 <img src="IMG_1353.JPG" class="mt-4 rounded shadow">
 </div>
 
@@ -194,7 +189,7 @@ Benvenuti a questa video lezione dedicata all’integrazione dei MacBook Air M2 
 <!-- DOCK -->
 <div id="dock">
   <div class="dock-item" data-target="slide1" data-title="Introduzione"><img src="IMG_1327.JPG" width="40"></div>
-  <div class="dock-item" data-target="slide2" data-title="Presentazioni"><img src="IMG_1328.JPG" width="40"></div>
+  <div class="dock-item" data-target="slide2" data-title="Presentazione"><img src="IMG_1328.JPG" width="40"></div>
   <div class="dock-item" data-target="slide3" data-title="Domande"><img src="IMG_1329.JPG" width="40"></div>
   <div class="dock-item" data-target="slide4" data-title="Funzioni"><img src="IMG_1330.JPG" width="40"></div>
   <div class="dock-item" data-target="slide5" data-title="Classroom"><img src="IMG_1331.JPG" width="40"></div>
@@ -211,7 +206,7 @@ function openSection(id){
   });
   const target=document.getElementById(id);
   target.style.display='block';
-  setTimeout(()=>target.classList.add('active'),10);
+  setTimeout(()=>target.classList.add('active'),15);
 }
 document.querySelectorAll('.dock-item').forEach(btn=>{
   btn.onclick=()=>openSection(btn.dataset.target);
